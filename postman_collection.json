@@ -1,0 +1,146 @@
+{
+  "info": {
+    "_postman_id": "tradapi-collection-001",
+    "name": "TradAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Collection Postman pour tester tous les endpoints de TradAPI (détection, traduction, détection+traduction)."
+  },
+  "item": [
+    {
+      "name": "/ping",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/ping",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["ping"]
+        }
+      }
+    },
+    {
+      "name": "/detect GET",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "x-rapidapi-host", "value": "testhost", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8001/detect?text=Bonjour",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["detect"],
+          "query": [
+            { "key": "text", "value": "Bonjour" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "/detect POST",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "x-rapidapi-host", "value": "testhost", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Hello, how are you?\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/detect",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["detect"]
+        }
+      }
+    },
+    {
+      "name": "/translate GET",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "x-rapidapi-host", "value": "testhost", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8001/translate?text=Bonjour&target=en",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["translate"],
+          "query": [
+            { "key": "text", "value": "Bonjour" },
+            { "key": "target", "value": "en" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "/translate POST",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "x-rapidapi-host", "value": "testhost", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Hello\",\n  \"target\": \"fr\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/translate",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["translate"]
+        }
+      }
+    },
+    {
+      "name": "/detect-translate GET",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "x-rapidapi-host", "value": "testhost", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8001/detect-translate?text=Bonjour&target=en",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["detect-translate"],
+          "query": [
+            { "key": "text", "value": "Bonjour" },
+            { "key": "target", "value": "en" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "/detect-translate POST",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "x-rapidapi-host", "value": "testhost", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Hello\",\n  \"target\": \"fr\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/detect-translate",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["detect-translate"]
+        }
+      }
+    }
+  ]
+} 
