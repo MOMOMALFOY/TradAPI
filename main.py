@@ -1,9 +1,13 @@
+import os
 from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from langdetect import detect
 from deep_translator import GoogleTranslator
 from typing import Optional
+
+# Pour Railway : récupérer le port depuis la variable d'environnement
+PORT = int(os.environ.get("PORT", 8000))  # Utilisé seulement si tu lances via Python directement
 
 app = FastAPI(
     title="Detection & Traduction Langue API",
@@ -95,4 +99,9 @@ async def detect_and_translate_get(
         translated = GoogleTranslator(source=detected_lang, target=target).translate(text)
         return {"detected": detected_lang, "translated": translated}
     except Exception as e:
-        return {"error": str(e)} 
+        return {"error": str(e)}
+
+# ---
+# Exemple de commande Railway (dans le Procfile ou Start Command) :
+# uvicorn main:app --host 0.0.0.0 --port $PORT
+# --- 
